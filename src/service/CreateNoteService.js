@@ -2,7 +2,7 @@ import axios from 'axios'
 
 
 const API_URL ='http://ktcrud-app-dev.ca-central-1.elasticbeanstalk.com';
-const API_URL_RETRIEVEALLNOTES = `${API_URL}/retrievenotes`
+const API_URL_RETRIEVEALLNOTES = `${API_URL}/retrievenotes`;
 
 class CreateNoteService {
 
