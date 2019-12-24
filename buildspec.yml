@@ -24,7 +24,14 @@ phases:
 # Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
 # used only for building and testing.
 # ExpressJS apps will need other artifact directories included (bin/*, public/*, routes/*, views/* etc).
- files:
-    - './**/*'
-  base-directory: build
-  name: angular-crud-app
+ artifacts:
+  files:
+    - src/*/*/*/*.js
+    - src/*/*/*.js
+    - src/*
+    - src/*/*
+    - app.js
+    - index.html
+    - package.json
+    - node_modules/async/*
+    - node_modules/lodash/*
