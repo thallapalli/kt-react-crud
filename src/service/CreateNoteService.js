@@ -9,6 +9,13 @@ class CreateNoteService {
     retrieveAllCourses() {
         return axios.get(API_URL_RETRIEVEALLNOTES);
     }
+    deleteCourse(id) {
+        //console.log('executed service')
+        return axios.delete(`${API_URL}/deletenote/${id}`);
+    }
+    addNoteClicked(note: Object) {
+        this.axios.post(`${API_URL}//createnote`,note)
+    }
 }
 
 export default new CreateNoteService()

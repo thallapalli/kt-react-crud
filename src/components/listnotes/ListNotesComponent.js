@@ -4,22 +4,47 @@ class ListNotesComponent extends Component {
 	constructor(props) {
         super(props)
         this.state = {
-            courses: [],
+            notes: [],
             message: null
         }
-        this.refreshCourses = this.refreshCourses.bind(this)
+        this.refreshNote = this.refreshNote.bind(this)
+        this.deleteNoteClicked = this.deleteNoteClicked.bind(this)
+       // this.updateCourseClicked = this.updateCourseClicked.bind(this)
+        this.addNoteClicked = this.addNoteClicked.bind(this)
+        this.refreshNote = this.refreshNote.bind(this)
     }
 
     componentDidMount() {
-        this.refreshCourses();
+        this.refreshNote();
+    }
+    deleteNoteClicked(id) {
+    	CreateNoteService.deleteNote(id)
+            .then(
+                response => {
+                    this.setState({ message: `Delete of note  ${id} Successful` })
+                    this.refreshCourses()
+                }
+            )
+
+    }
+    addNoteClicked(note: Object) {
+    	CreateNoteService.addNoteClicked(note)
+        .then(
+            response => {
+                this.setState({ message: `adding  note  ${note} Successful` })
+                this.refreshCourses()
+            }
+        )
     }
 
-    refreshCourses() {
+    
+
+    refreshNote() {
     	CreateNoteService.retrieveAllCourses()//HARDCODED
             .then(
                 response => {
                     console.log(response);
-                    this.setState({ courses: response.data })
+                    this.setState({ notes: response.data })
                 }
             )
     }
@@ -38,16 +63,20 @@ class ListNotesComponent extends Component {
                         </thead>
                         <tbody>
                             {
-                                this.state.courses.map(
-                                    course =>
-                                        <tr key={course.id}>
-                                            <td>{course.id}</td>
-                                            <td>{course.name}</td>
+                                this.state.notes.map(
+                                    note =>
+                                        <tr key={note.id}>
+                                            <td>{note.id}</td>
+                                            <td>{note.name}</td>
+                                            <td><button className="btn btn-warning" onClick={() => this.deleteNoteClicked(note.id)}>Delete</button></td>
                                         </tr>
                                 )
                             }
                         </tbody>
                     </table>
+                    <div className="row">
+                    <button className="btn btn-success" onClick={this.addNoteClicked}>Add</button>
+                </div>
                 </div>
             </div>
         )
