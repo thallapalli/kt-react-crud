@@ -8,4 +8,4 @@ class ListNotesComponent extends Component {
     }
 }
 
-export default InstructorApp
+export default ListNotesComponent
