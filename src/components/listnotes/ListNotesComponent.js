@@ -10,7 +10,7 @@ class ListNotesComponent extends Component {
         this.refreshNote = this.refreshNote.bind(this)
         this.deleteNoteClicked = this.deleteNoteClicked.bind(this)
        // this.updateCourseClicked = this.updateCourseClicked.bind(this)
-        this.addNoteClicked = this.addNoteClicked.bind(this)
+     
         this.refreshNote = this.refreshNote.bind(this)
     }
 
@@ -18,24 +18,16 @@ class ListNotesComponent extends Component {
         this.refreshNote();
     }
     deleteNoteClicked(id) {
-    	CreateNoteService.deleteNote(id)
+        CreateNoteService.deleteCourse(id)
             .then(
                 response => {
-                    this.setState({ message: `Delete of note  ${id} Successful` })
-                    this.refreshCourses()
+                    this.setState({ message: `Delete of note ${id} Successful` })
+                    this.refreshNote()
                 }
             )
 
     }
-    addNoteClicked(note: Object) {
-    	CreateNoteService.addNoteClicked(note)
-        .then(
-            response => {
-                this.setState({ message: `adding  note  ${note} Successful` })
-                this.refreshCourses()
-            }
-        )
-    }
+    
 
     
 
@@ -74,9 +66,7 @@ class ListNotesComponent extends Component {
                             }
                         </tbody>
                     </table>
-                    <div className="row">
-                    <button className="btn btn-success" onClick={this.addNoteClicked}>Add</button>
-                </div>
+                   
                 </div>
             </div>
         )
