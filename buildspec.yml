@@ -27,6 +27,7 @@ phases:
 artifacts:
   files:
     - src/*
+    - src/components/listnotes/*
     - public/index.html
     - package.json
     - node_modules/async/*
