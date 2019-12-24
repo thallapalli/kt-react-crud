@@ -31,3 +31,4 @@ artifacts:
     - package.json
     - node_modules/async/*
     - node_modules/lodash/*
+    - package-lock.json
