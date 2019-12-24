@@ -6,7 +6,7 @@ const API_URL_RETRIEVEALLNOTES = `${API_URL}/retrievenotes`;
 
 class CreateNoteService {
 
-    retrieveAllCourses(name) {
+    retrieveAllCourses() {
         return axios.get(API_URL_RETRIEVEALLNOTES);
     }
 }
